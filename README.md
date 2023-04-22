@@ -22,15 +22,17 @@
 
 6. Por último, aparece una ventana de diálogo diciendo; ¿ Desea abrir el repositorio clonado ?, y se le da click en; ```abrir```
 
-## Configuración
+## Instalación
 
-1. Agregar Composer
+1. Levantar los servicios del servidor local(Xampp); ```Apache``` y ``` MySQL```
+
+2. Agregar Composer
 
 ```javascript
 composer install
 ```
 
-2. Crear el fichero ``` .env ``` en la raíz del proyecto y asignar lo siguiente;
+3. Crear el fichero ``` .env ``` en la raíz del proyecto y asignar lo siguiente;
 ``` 
     APP_NAME=Blogs
     APP_ENV=local
@@ -92,15 +94,21 @@ composer install
     VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
     VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
-3. Generar la clave del sistema;
-```
-    php artisan key:generate
-```
-4. Generar migraciones
+4. Crear en phpmyadmin un nueva base de datos con el siguiente nombre; ```appblogs``` 
+
+5. Generar migraciones
 ```
     php artisan migrate
 ```
-5. Por último, ejecutar el sistema
+6. Agregar el siguiente comando
+```
+    npm install --save-dev vite laravel-vite-plugin
+```
+7. Agregar el siguiente comando en la terminal
+```
+    npm run build
+```
+8. Por último, ejecutar el sistema
 ```
     php artisan serve
 ```
@@ -115,4 +123,4 @@ composer install
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+El marco de Laravel es un software de código abierto con licencia bajo el [MIT license](https://opensource.org/licenses/MIT).
