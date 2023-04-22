@@ -28,7 +28,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item">
+                            <a href="{{route('blog.index')}}" class="nav-link"><span class="navbar-brand mb-0 h1">{{ __('Inicio') }}</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('blog.create')}}" class="nav-link"><span class="navbar-brand mb-0 h1">{{ __('Crear Blog') }}</span></a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
