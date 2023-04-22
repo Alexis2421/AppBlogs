@@ -1,31 +1,48 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-6">
             <div class="card  border-primary mb-3">
-                @foreach ($dataBlog as $blog)
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                    
-                      <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          {{$blog->title}}
-                        </button>
-                      </h2>
-                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                          <strong>{{$blog->title}}</strong> {{$blog->description}} <br><br>
-                          <strong>Publicacion: {{$blog->date}}</strong>
-                      </div>
-                    
+              @foreach ($dataBlog as $blog)
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                          
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      {{$blog->title}}
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <strong>{{$blog->title}}</strong> {{$blog->description}} <br><br>
+                      <strong>Publicacion: {{$blog->date}}</strong>
                     </div>
+                  </div>
+                          
                 </div>
-                @endforeach
+              </div>
+              @endforeach
             </div>
+          </div>
+          <div class="col-md-6 text-center">
+            <div class="card border-primary mb-3" style="max-width: 80rem;" > 
+              <form class="form-inline" action="{{route('search-date')}}" method="post">
+                @csrf
+                <br>
+                <label for="form-control" >Seleccione la fecha</label>
+                
+                <div class="row mb-3">
+                  <label for="date" class="col-md-4 col-form-label text-md-end">{{ __('Fecha') }}</label>
+                  <div class="col-md-6">
+                      <input id="date" type="date" class="form-control" name="date" required autocomplete="date" autofocus>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+              </form>
+            </div>
+          </div> 
         </div>
-    </div>
-</div>
-
+      </div>
 @endsection

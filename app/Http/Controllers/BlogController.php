@@ -34,6 +34,15 @@ class BlogController extends Controller
         return redirect()->route('blog.index');
     }
 
+    public function searchDate(Request $request)
+    {
+
+        $date = $request->except('_token');
+        //DB::table('fichas')->whereDate('created_at', $fecha)->get();
+        $dataBlog = Blog::where('date', $date)->get();
+        return view('Blogs.index', compact('dataBlog'));
+        
+    }
     /**
      * Display the specified resource.
      */

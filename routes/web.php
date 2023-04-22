@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/', [BlogController::class, 'index'])->name('home');
 });
 
-
+Route::match(['get', 'post'],'/search-date', '\App\Http\Controllers\BlogController@searchDate')->name('search-date');
 
 Route::resource('blog', \App\Http\Controllers\BlogController::class);
 
