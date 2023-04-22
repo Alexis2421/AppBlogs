@@ -8,6 +8,19 @@
 </p>
 
 ## Clonación del Sistema
+1. Abrir una nueva ventana en Visual Studio Code  ``` Archivo\Nueva Ventana ```
+
+2. Dar click en; ```repositorio remoto en una carpeta local```
+
+3. Luego en la parte superior de visual studio code se pega el siguiente link:
+```
+    https://github.com/Alexis2421/appBlogs.git
+```
+4. Luego se le da click en; ```Dirección URL de repositorio```
+
+5. Luego se elige la carpeta donde se desea guardar el repositorio, y click en; ```seleccionar como destino del repositorio```
+
+6. Por último, aparece una ventana de diálogo diciendo; ¿ Desea abrir el repositorio clonado ?, y se le da click en; ```abrir```
 
 ## Configuración
 
