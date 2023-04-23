@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -13,7 +15,8 @@ class BlogController extends Controller
     public function index()
     {
         $dataBlog = Blog::all();
-        return view('Blogs.index', compact('dataBlog'));
+        $user = User::get(['type']);
+        return view('Blogs.index', compact('dataBlog','user'));
     }
 
     /**
@@ -54,9 +57,10 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Blog $blog)
+    public function edit($id)
     {
-        //
+        $blog = Blog::find($id);
+        return view('Blogs.edit' , compact('blog'));
     }
 
     /**
@@ -64,7 +68,10 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $blog->update($request->except('_token','_method'));
+
+        return redirect()->route('blog.index')
+            ->with('success', ' Blog Actualizado Satisfactoriamente');
     }
 
     /**
@@ -72,6 +79,9 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        $blog = Blog::find($blog->id);
+        $blog->delete($blog);
+        return redirect()->route('blog.index')
+            ->with('success', 'Blog Eliminado Satisfactoriamente');
     }
 }

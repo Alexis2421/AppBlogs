@@ -13,9 +13,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('Has iniciado Sesión!.') }}
+                    {{ Auth::user()->name }}  Ha iniciado Sesión!.
                 </div>
+                <div class="card-body text-center">
+                    <a href="{{route('blog.index')}}" class="btn btn-primary">Ir a Gestión de Blogs</a>
+                </div>
+
+                
             </div>
         </div>
     </div>
