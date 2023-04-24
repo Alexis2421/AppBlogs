@@ -18,13 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function (){
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-});
-
 Route::match(['get', 'post'],'/search-date', '\App\Http\Controllers\BlogController@searchDate')->name('search-date');
 
 Route::resource('blog', \App\Http\Controllers\BlogController::class);
+
+Route::group(['middleware' => 'auth'], function (){
+    Route::get('/', [App\Http\Controllers\BlogController::class, 'index'])->name('index');
+});
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 
 
